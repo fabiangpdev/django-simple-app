@@ -5,8 +5,6 @@ from .models import Game, Platform, Genre
 from .forms import GameForm
 
 
-# ─── Modelos ────────────────────────────────────────────────────────────────
-
 class PlatformModelTest(TestCase):
     def test_str(self):
         platform = Platform.objects.create(name='PC')
@@ -56,8 +54,6 @@ class GameModelTest(TestCase):
         self.game.status = 'completado'
         self.assertEqual(self.game.get_status_color(), 'success')
 
-
-# ─── Vistas ─────────────────────────────────────────────────────────────────
 
 class GameListViewTest(TestCase):
     def setUp(self):
@@ -159,8 +155,6 @@ class GameDeleteViewTest(TestCase):
         self.assertRedirects(response, reverse('games:game_list'))
 
 
-# ─── Formularios ────────────────────────────────────────────────────────────
-
 class GameFormTest(TestCase):
     def test_formulario_valido(self):
         data = {'title': 'Juego Valido', 'status': 'pendiente'}
@@ -183,9 +177,6 @@ class GameFormTest(TestCase):
         data = {'title': 'Test', 'status': 'jugando', 'rating': 8}
         form = GameForm(data=data)
         self.assertTrue(form.is_valid())
-
-
-# ─── Vista de Estadisticas ───────────────────────────────────────────────────
 
 class StatsViewTest(TestCase):
     def test_status_code_200(self):
