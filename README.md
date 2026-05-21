@@ -52,33 +52,7 @@ docker-compose exec web python manage.py test games -v 2
 
 ---
 
-## Despliegue en la web
 
-### Opcion 1: Render (recomendado para SQLite)
-
-1. Subir el codigo a GitHub
-2. Crear cuenta en render.com
-3. New > Web Service > conectar repo
-4. Configurar:
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `gunicorn config.wsgi:application`
-5. En "Disks", agregar un disco en `/opt/render/project/src` para persistir la BD
-6. Variables de entorno:
-   ```
-   SECRET_KEY=<clave-secreta-aleatoria>
-   DEBUG=False
-   ALLOWED_HOSTS=<tu-dominio>.onrender.com
-   CSRF_TRUSTED_ORIGINS=https://<tu-dominio>.onrender.com
-   ```
-
-### Opcion 2: Railway
-
-1. Subir a GitHub
-2. railway.app > New Project > Deploy from GitHub
-3. Agregar las mismas variables de entorno
-4. Railway detecta el Dockerfile automaticamente
-
----
 
 ## Estructura del proyecto
 
