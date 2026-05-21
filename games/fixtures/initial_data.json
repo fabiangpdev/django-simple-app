@@ -1,0 +1,85 @@
+[
+  {"model": "games.platform", "pk": 1, "fields": {"name": "PC"}},
+  {"model": "games.platform", "pk": 2, "fields": {"name": "PlayStation 5"}},
+  {"model": "games.platform", "pk": 3, "fields": {"name": "Xbox Series X"}},
+  {"model": "games.platform", "pk": 4, "fields": {"name": "Nintendo Switch"}},
+  {"model": "games.platform", "pk": 5, "fields": {"name": "PlayStation 4"}},
+  {"model": "games.platform", "pk": 6, "fields": {"name": "Movil"}},
+
+  {"model": "games.genre", "pk": 1, "fields": {"name": "Accion"}},
+  {"model": "games.genre", "pk": 2, "fields": {"name": "RPG"}},
+  {"model": "games.genre", "pk": 3, "fields": {"name": "Estrategia"}},
+  {"model": "games.genre", "pk": 4, "fields": {"name": "Deportes"}},
+  {"model": "games.genre", "pk": 5, "fields": {"name": "Terror"}},
+  {"model": "games.genre", "pk": 6, "fields": {"name": "Aventura"}},
+  {"model": "games.genre", "pk": 7, "fields": {"name": "Simulacion"}},
+  {"model": "games.genre", "pk": 8, "fields": {"name": "Puzzle"}},
+  {"model": "games.genre", "pk": 9, "fields": {"name": "Plataformas"}},
+
+  {
+    "model": "games.game", "pk": 1,
+    "fields": {
+      "title": "The Witcher 3: Wild Hunt",
+      "platform": 1, "genre": 2,
+      "status": "completado", "rating": 10,
+      "cover_url": "",
+      "notes": "Una de las mejores historias que he jugado. Los DLCs son increibles.",
+      "added_date": "2025-01-10"
+    }
+  },
+  {
+    "model": "games.game", "pk": 2,
+    "fields": {
+      "title": "Elden Ring",
+      "platform": 1, "genre": 1,
+      "status": "jugando", "rating": 9,
+      "cover_url": "",
+      "notes": "Difícil pero muy satisfactorio. Aun me falta explorar Farum Azula.",
+      "added_date": "2025-02-05"
+    }
+  },
+  {
+    "model": "games.game", "pk": 3,
+    "fields": {
+      "title": "Stardew Valley",
+      "platform": 4, "genre": 7,
+      "status": "jugando", "rating": 8,
+      "cover_url": "",
+      "notes": "Perfecto para relajarse. Mi granja ya tiene nombre: La Esperanza.",
+      "added_date": "2025-02-20"
+    }
+  },
+  {
+    "model": "games.game", "pk": 4,
+    "fields": {
+      "title": "Hollow Knight",
+      "platform": 1, "genre": 9,
+      "status": "pendiente", "rating": null,
+      "cover_url": "",
+      "notes": "Me lo recomendaron mucho. Lo tengo en la lista desde hace meses.",
+      "added_date": "2025-03-01"
+    }
+  },
+  {
+    "model": "games.game", "pk": 5,
+    "fields": {
+      "title": "Red Dead Redemption 2",
+      "platform": 5, "genre": 6,
+      "status": "completado", "rating": 10,
+      "cover_url": "",
+      "notes": "La mejor narrativa que he experimentado en un videojuego.",
+      "added_date": "2025-01-15"
+    }
+  },
+  {
+    "model": "games.game", "pk": 6,
+    "fields": {
+      "title": "Cyberpunk 2077",
+      "platform": 1, "genre": 2,
+      "status": "abandonado", "rating": 6,
+      "cover_url": "",
+      "notes": "Lo deje al principio por los bugs. Quizas retomarlo despues del parche.",
+      "added_date": "2025-03-10"
+    }
+  }
+]

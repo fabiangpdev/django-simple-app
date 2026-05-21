@@ -1,0 +1,105 @@
+{% extends 'games/base.html' %}
+
+{% block title %}{{ game.title }} - GameVault{% endblock %}
+
+{% block content %}
+
+<div class="mb-3">
+    <a href="{% url 'games:game_list' %}" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left"></i> Volver a la coleccion
+    </a>
+</div>
+
+<div class="row g-4">
+    <!-- Portada -->
+    <div class="col-md-3">
+        {% if game.cover_url %}
+            <img src="{{ game.cover_url }}"
+                 class="img-fluid rounded shadow"
+                 alt="{{ game.title }}"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="cover-placeholder rounded shadow" style="display:none; height:280px;">
+                <i class="bi bi-controller"></i>
+            </div>
+        {% else %}
+            <div class="cover-placeholder rounded shadow" style="height:280px; font-size:4rem;">
+                <i class="bi bi-controller"></i>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Info -->
+    <div class="col-md-9">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+            <h2 class="fw-bold mb-0">{{ game.title }}</h2>
+            <div class="d-flex gap-2">
+                <a href="{% url 'games:game_update' game.pk %}" class="btn btn-outline-primary btn-sm">
+                    <i class="bi bi-pencil-fill"></i> Editar
+                </a>
+                <a href="{% url 'games:game_delete' game.pk %}" class="btn btn-outline-danger btn-sm">
+                    <i class="bi bi-trash-fill"></i> Eliminar
+                </a>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <table class="table table-borderless mb-0">
+                    <tbody>
+                        <tr>
+                            <th class="text-muted" width="35%">Estado</th>
+                            <td>
+                                <span class="badge fs-6
+                                    {% if game.status == 'jugando' %}bg-primary
+                                    {% elif game.status == 'completado' %}bg-success
+                                    {% elif game.status == 'pendiente' %}bg-secondary
+                                    {% else %}bg-danger{% endif %}">
+                                    {{ game.get_status_display }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% if game.platform %}
+                        <tr>
+                            <th class="text-muted">Plataforma</th>
+                            <td><i class="bi bi-display"></i> {{ game.platform }}</td>
+                        </tr>
+                        {% endif %}
+                        {% if game.genre %}
+                        <tr>
+                            <th class="text-muted">Genero</th>
+                            <td><i class="bi bi-tag"></i> {{ game.genre }}</td>
+                        </tr>
+                        {% endif %}
+                        {% if game.rating %}
+                        <tr>
+                            <th class="text-muted">Puntuacion</th>
+                            <td>
+                                <span class="text-warning fs-5 fw-bold">
+                                    <i class="bi bi-star-fill"></i> {{ game.rating }}/10
+                                </span>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        <tr>
+                            <th class="text-muted">Agregado el</th>
+                            <td>{{ game.added_date|date:"d/m/Y" }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        {% if game.notes %}
+        <div class="card shadow-sm border-0 mt-3">
+            <div class="card-header bg-light fw-semibold">
+                <i class="bi bi-journal-text"></i> Notas
+            </div>
+            <div class="card-body text-muted">
+                {{ game.notes|linebreaks }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
